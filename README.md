@@ -1,5 +1,8 @@
 # AI Chat Bot With Groq API
 
+![screenshot](./images/screenshot.png)
+
+
 ---
 
 Chat Bot is a simple web application that demonstrates a basic chat interface with a bot. Users can input messages, and the bot will respond accordingly.
