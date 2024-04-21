@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,18 +19,21 @@
         }
 
         .chatbox-scroll {
-            height: calc(100vh - 150px); /* Adjust the height as needed */
+            height: calc(100vh - 150px);
+            /* Adjust the height as needed */
             overflow-y: auto;
         }
 
         /* Adjust the padding to keep the chatbox visible */
         .chatbox-padding {
-            padding-bottom: 100px; /* Adjust as needed */
+            padding-bottom: 100px;
+            /* Adjust as needed */
         }
 
         /* Max-width for chat response content */
         .chat-content {
-            max-width: 100%; /* Adjust as needed */
+            max-width: 100%;
+            /* Adjust as needed */
             padding: 20px;
             margin-bottom: 20px;
         }
@@ -41,15 +45,19 @@
             padding: 20px;
             margin-bottom: 20px;
         }
+
         pre {
             font-size: 20px;
             width: 100%;
             padding: 14px;
-            white-space: pre-wrap; /* Enable word wrapping */
-            overflow-wrap: break-word; /* Fallback for older browsers */
+            white-space: pre-wrap;
+            /* Enable word wrapping */
+            overflow-wrap: break-word;
+            /* Fallback for older browsers */
         }
     </style>
 </head>
+
 <body class="bg-gray-100">
     <div class="container mx-auto py-8">
         <!-- Chat History Container -->
@@ -60,8 +68,12 @@
 
     <!-- Chat Input Form (fixed at the bottom) -->
     <form id="chatForm" class="fixed-bottom bg-white w-full p-4">
-        <input type="text" id="messageInput" name="message" placeholder="Enter your message" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
-        <button type="submit" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Send</button>
+        <input type="text" id="messageInput" name="message" placeholder="Enter your message"
+            class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
+        <button type="submit" 
+        class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+            Send
+        </button>
     </form>
 
     <script>
@@ -90,7 +102,7 @@
         }
 
         // Event listener for form submission
-        document.getElementById('chatForm').addEventListener('submit', async function(event) {
+        document.getElementById('chatForm').addEventListener('submit', async function (event) {
             event.preventDefault(); // Prevent default form submission
 
             const message = document.getElementById('messageInput').value.trim();
@@ -122,4 +134,5 @@
         });
     </script>
 </body>
+
 </html>
