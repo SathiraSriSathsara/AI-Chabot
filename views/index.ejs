@@ -69,19 +69,21 @@
         function updateChatHistory(data) {
             const chatHistoryContainer = document.getElementById('chatHistoryContainer');
 
-            // Create a new chat message element for the user's input
-            const userMessageElement = document.createElement('div');
-            userMessageElement.classList.add('flex', 'items-start');
-            userMessageElement.innerHTML = `<div class="bg-blue-100 p-2 rounded-md"><p class="text-blue-800">${data.userInput}</p></div>`;
-            chatHistoryContainer.appendChild(userMessageElement);
+            // Create a new chat message element
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('flex', 'items-start');
 
-            // Create a new chat message element for the AI's response
-            const aiMessageElement = document.createElement('div');
-            aiMessageElement.classList.add('flex', 'items-start');
-            const content = data.containsCode ? `<pre>${data.response}</pre>` : data.response;
-            const contentWrapper = `<div class="bg-gray-200 p-2 rounded-md chat-content">${content}</div>`; // Wrap content in a div with max-width
-            aiMessageElement.innerHTML = contentWrapper;
-            chatHistoryContainer.appendChild(aiMessageElement);
+            if (data.role === 'user') {
+                messageElement.innerHTML = `<div class="bg-blue-100 p-2 rounded-md"><p class="text-blue-800">${data.content}</p></div>`;
+            } else {
+                // Check if AI message contains code
+                const content = data.containsCode ? `<pre>${data.content}</pre>` : data.content;
+                const contentWrapper = `<div class="bg-gray-200 p-2 rounded-md chat-content">${content}</div>`; // Wrap content in a div with max-width
+                messageElement.innerHTML = contentWrapper;
+            }
+
+            // Add the message element to the chat history container
+            chatHistoryContainer.appendChild(messageElement);
 
             // Scroll to bottom of chat history container
             chatHistoryContainer.scrollTop = chatHistoryContainer.scrollHeight;
@@ -91,17 +93,17 @@
         document.getElementById('chatForm').addEventListener('submit', async function(event) {
             event.preventDefault(); // Prevent default form submission
 
-            const userInput = document.getElementById('messageInput').value.trim();
-            if (!userInput) return; // Do nothing if message is empty
+            const message = document.getElementById('messageInput').value.trim();
+            if (!message) return; // Do nothing if message is empty
 
             try {
-                // Send user input to server
+                // Send message to server
                 const response = await fetch('/send-chat', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ userInput })
+                    body: JSON.stringify({ message })
                 });
 
                 // If the request was successful, update the chat history
