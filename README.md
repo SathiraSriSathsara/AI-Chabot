@@ -41,10 +41,14 @@ npm install
 ```
 
 4. Get API lkey from [Groq](https://console.groq.com/keys).
+
 <br>
-5. Then rename `.env-example ` to `.env`, and fill in your own values for the variables:
+
+5. Then rename `.env-example` to `.env`, and fill in your own values for the variables:
    - `GROQ_API_KEY ` : Your Groq API Key
+
 <br>
+
 6. Start the server:
 
 ```bash
