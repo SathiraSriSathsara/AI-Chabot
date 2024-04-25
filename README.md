@@ -1,7 +1,6 @@
 # AI Chat Bot With Groq API
 
-![screenshot](./images/screenshot.png)
-
+![screenshot](./images/chatbot.png)
 
 ---
 
